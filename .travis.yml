@@ -5,6 +5,7 @@ node_js:
 - '8'
 install:
 - yarn
+- npm
 cache:
   directories:
   - node_modules
@@ -23,7 +24,12 @@ before_install:
 - ssh-add ./deploy_key
 - ssh -i ./deploy_key root@$SERVER_IP_ADDRESS pwd
 after_success:
-- ssh -i ./deploy_key root@$SERVER_IP_ADDRESS "./auto.sh"
+- npm install pm2 -g
+- sh ./auto.sh
+# - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
+#     sh .bin/deploy.sh;
+#   fi
+# - sh ./bin/deploy.sh;
 addons:
   ssh_known_hosts: 47.93.63.88
 script:
