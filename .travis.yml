@@ -22,10 +22,11 @@ before_install:
 - chmod 600 ./deploy_key
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_key
-- ssh -i ./deploy_key root@$SERVER_IP_ADDRESS pwd
+- ssh -i ./deploy_key root@$SERVER_IP_ADDRESS
 after_success:
 # - npm install pm2 -g
-- sh ./auto.sh
+- pwd
+- scp -o StrictHostKeyChecking=no -r dist/  root@$SERVER_IP_ADDRESS:/root/vue-hackernews-2.0/
 # - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
 #     sh .bin/deploy.sh;
 #   fi
@@ -33,6 +34,6 @@ after_success:
 addons:
   ssh_known_hosts: 47.93.63.88
 script:
-- yarn
+- yarn run build
 # - yarn run build
 # - yarn start
