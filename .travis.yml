@@ -26,7 +26,7 @@ before_install:
 after_success:
 # - npm install pm2 -g
 - pwd
-- scp -o StrictHostKeyChecking=no -r dist/  root@$SERVER_IP_ADDRESS:/root/vue-hackernews-2.0/
+# - scp -o StrictHostKeyChecking=no -r dist/  root@$SERVER_IP_ADDRESS:/root/vue-hackernews-2.0/
 - ssh -i ./deploy_key root@$SERVER_IP_ADDRESS
 - ./auto.sh
 # - if [ $TRAVIS_PULL_REQUEST_BRANCH ]; then
