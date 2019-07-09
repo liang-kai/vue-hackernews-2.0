@@ -24,3 +24,7 @@ after_success:
 - ssh -i ./deploy_key root@$SERVER_IP_ADDRESS pwd "./auto.sh"
 addons:
   ssh_known_hosts: 47.93.63.88
+script:
+- yarn
+- yarn run build
+- yarn start
