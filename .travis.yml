@@ -27,6 +27,6 @@ after_success:
 addons:
   ssh_known_hosts: 47.93.63.88
 script:
-# - yarn
+- yarn
 # - yarn run build
 # - yarn start
